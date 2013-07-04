@@ -1,0 +1,19 @@
+    <!DOCTYPE HTML>  
+    <html>  
+    <body>  
+<canvas id="canvas" width="600"height="400">      
+         <p>Your browserdoes not support the canvas element!</p>      
+</canvas>      
+       
+<script type="text/javascript">      
+window.onload = function() {      
+         var canvas =document.getElementById("canvas");      
+         var context2D =canvas.getContext("2d");      
+              
+         var pic = new Image();      
+         pic.src ="http://imgsrc.baidu.com/forum/pic/item/e6b14bc2a4561b1fe4dd3b24.jpg";      
+         context2D.drawImage(pic,0, 0);      
+}      
+</script>          
+    </body>  
+    </html>  

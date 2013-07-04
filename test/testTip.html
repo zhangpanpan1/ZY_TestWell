@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>测试鼠标提示</title>
+        <script type="text/javascript" src="../js/lib/jquery-1.8.2.min.js"></script>
+        <link rel="stylesheet" href="../js/lib/poshytip-1.2/tip-yellow/tip-yellow.css" type="text/css">
+        <script type="text/javascript" src="../js/lib/poshytip-1.2/jquery.poshytip.js"></script>
+        <script type="text/javascript">
+            $().ready(function() {
+                $('#demo-async-timeout').poshytip({
+                    className: 'tip-darkgray',
+                    content: function(updateCallback) {
+                        window.setTimeout(function() {
+                            updateCallback('信息已更新');
+                        }, 1000);
+                        return 'Loading...';
+                    }
+                });
+                
+                $("#canvas").poshytip({
+                    
+                    showTimeout:100,
+                    followCursor:true,
+                    fade:false,
+                    slide:false ,
+                    //className: 'tip-darkgray',
+                    content: function(updateCallback) {
+                        window.setTimeout(function() {
+                            updateCallback('信息已更新');
+                        }, 1000);
+                        return 'Loading...';
+                    }
+                });
+                $("#demo-basic").poshytip();
+
+
+
+            });
+        </script>
+    </head>
+    <body>
+        <div id="canvas" width="650" height="350" style="border:1px solid red;height:400px" ></div>
+        <p>
+        <canvas id="canvas2" width="500" height="50">Your browserdoes not support the canvas element!</canvas>
+        </p>
+        <button id="btn_show_text">点击测试</button>
+        <a href="#" class="jqModal">view</a>
+        <div class="jqmWindow" id="daoProperty" title="Hey, there! This is a tooltip." >
+            <div style="background-color:#F0F0F0;padding:10px;width:300px" >
+                <table>
+                    <tr><td></td><td></td></tr>
+                    <tr><td>起始深度：</td><td><input id="startDepth" type="text"></td></tr>
+                    <tr><td>起始深度：</td><td><input id="endDepth" type="text"></td></tr>
+                    <tr><td>深度比例：</td><td><input id="depthScale" type="text"></td></tr>
+                </table>
+            </div>
+        </div>
+        <a id="demo-basic" title="Hey, there! This is a tooltip." href="#">Hover for a tooltip</a>
+    </body>
+</html>

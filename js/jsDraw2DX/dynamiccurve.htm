@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+<meta http-equiv="Content-Language" content="en">
+
+<META name="description" content="Javascript Draw Dynamic/Interactive Curve. jsDraw2DX events handling example.">
+<TITLE>Dynamic Curve Drawing Example, jsDraw2DX</TITLE>
+<link rel="stylesheet" type="text/css" href="jsDraw2DX/jsdraw2dx.css" media="screen" >
+</head>
+<body>
+<div class="container">
+<div class="main">
+<div class="header">
+<div class="title">
+<h1>
+<A href="http://jsdraw2dx.jsfiction.com"><IMG height=54 src="jsDraw2DX/jsdraw2dx.jpg" width=195 border=0 alt="jsDraw2D JavaScript Graphics Library"></A>
+<span id="msg" style="font-size:larger;">
+</span>
+</h1>
+</div>
+</div>
+
+<div class="content">
+
+<div class="grarybg">
+    <div>
+    <a href="http://www.jsfiction.com">jsFiction</a> |
+    <a href="http://jsdraw2dx.jsfiction.com" style="color:red;">jsDraw2DX</a> | 
+    <a href="../documentation.htm">Documentation</a> |
+    <a href="../download.htm">Download</a> |		
+    <a href="http://www.jsfiction.com/contact.htm">Contact</a>
+    </div>
+</div>
+<div class="section">
+<h2>
+Dynamic/Interactive Curve Drawing Example: jsDraw2DX         	    
+</h2>
+<p>
+This example demonstrates that how interactivity can be easily & effectively implemented with the event handling ability of jsDraw2DX.
+In the source you can notice how jxCircle object can be accessed in the event handler.
+</p>
+<br>
+<div id="graphics" style="overflow:hidden;position:relative;width:600px;height:370px;border:#999999 1px solid;">
+<span style="font-size:14pt;color:Green;"><b>&nbsp;Drag the yellow circles</b></span>
+</div>
+</div>
+<div class="section">
+<h1>
+Source Code:
+</h1>
+<pre class="jscode">
+var graphicsDiv=document.getElementById("graphics");
+var gr = new jxGraphics(graphicsDiv);
+var pen = new jxPen(new jxColor("blue"),2);
+var brushYellow = new jxBrush(new jxColor('yellow'));
+var brushRed = new jxBrush(new jxColor('red'));
+brushRed.fillType = 'lin-grad';
+
+graphicsDiv.onmousemove = getMouseXY;
+
+var mouseX = 0, mouseY = 0;
+
+//Mousedown event handler for circle
+function circleMouseDown(evt, obj) {
+    drag = true;
+    activeCircle = obj;
+}
+
+//Mouseup event handler for circle
+function circleMouseUp() {
+    drag = false;
+    activeCircle = null;
+}
+
+//Predefined curve points
+var curvePoints = [new jxPoint(68, 187), new jxPoint(152, 94), new jxPoint(300, 128), new jxPoint(442, 67), new jxPoint(511, 213), new jxPoint(398, 275), new jxPoint(205, 277)];
+
+//Draw closed curve
+var curve = new jxClosedCurve(curvePoints, pen, brushRed)
+curve.draw(gr);
+
+//Draw circles at the curve points
+var circles = new Array(), drag = false, activeCircle;;
+for (var i in curvePoints) {
+    var cir = new jxCircle(curvePoints[i], 10, pen, brushYellow);
+        cir.draw(gr);
+        cir.addEventListener('mousedown', circleMouseDown);
+        cir.addEventListener('mouseup', circleMouseUp);
+        circles[i] = cir;
+    }
+
+//Check mouse position and redraw curve/circles
+function getMouseXY(e) {
+    if (document.all) //For IE
+	{
+    mouseX = event.clientX + document.body.parentElement.scrollLeft;
+    mouseY = event.clientY + document.body.parentElement.scrollTop;
+  } else { 
+    mouseX = e.pageX
+    mouseY = e.pageY
+  }  
+
+  if (mouseX < 0){mouseX = 0}
+  if (mouseY < 0){mouseY = 0}  
+  
+  mouseX =mouseX - graphicsDiv.offsetLeft;
+  mouseY = mouseY - graphicsDiv.offsetTop;
+  
+  //Redraw the curve with the changed point
+  if (drag) {
+      if (activeCircle) {
+          activeCircle.center = new jxPoint(mouseX, mouseY);
+          activeCircle.draw(gr);
+          var curvePoints = new Array(); 
+          for (var i in circles) {
+              curvePoints[i] = circles[i].center;
+          }
+          curve.points = curvePoints;
+          curve.draw(gr); 
+      }
+  }
+  return true;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<script src="jsDraw2DX/jsDraw2DX.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+var graphicsDiv=document.getElementById("graphics");
+var gr = new jxGraphics(graphicsDiv);
+var pen = new jxPen(new jxColor("blue"),2);
+var brushYellow = new jxBrush(new jxColor('yellow'));
+var brushRed = new jxBrush(new jxColor('red'));
+brushRed.fillType = 'lin-grad';
+
+graphicsDiv.onmousemove = getMouseXY;
+
+var mouseX = 0, mouseY = 0;
+
+//Mousedown event handler for circle
+function circleMouseDown(evt, obj) {
+    drag = true;
+    activeCircle = obj;
+}
+
+//Mouseup event handler for circle
+function circleMouseUp() {
+    drag = false;
+    activeCircle = null;
+}
+
+//Predefined curve points
+var curvePoints = [new jxPoint(68, 187), new jxPoint(152, 94), new jxPoint(300, 128), new jxPoint(442, 67), new jxPoint(511, 213), new jxPoint(398, 275), new jxPoint(205, 277)];
+
+//Draw closed curve
+var curve = new jxClosedCurve(curvePoints, pen, brushRed)
+curve.draw(gr);
+
+//Draw circles at the curve points
+var circles = new Array(), drag = false, activeCircle;;
+for (var i in curvePoints) {
+    var cir = new jxCircle(curvePoints[i], 10, pen, brushYellow);
+        cir.draw(gr);
+        cir.addEventListener('mousedown', circleMouseDown);
+        cir.addEventListener('mouseup', circleMouseUp);
+        circles[i] = cir;
+    }
+
+//Check mouse position and redraw curve/circles
+function getMouseXY(e) {
+    if (document.all) //For IE
+	{
+    mouseX = event.clientX + document.body.parentElement.scrollLeft;
+    mouseY = event.clientY + document.body.parentElement.scrollTop;
+  } else { 
+    mouseX = e.pageX
+    mouseY = e.pageY
+  }  
+
+  if (mouseX < 0){mouseX = 0}
+  if (mouseY < 0){mouseY = 0}  
+  
+  mouseX =mouseX - graphicsDiv.offsetLeft;
+  mouseY = mouseY - graphicsDiv.offsetTop;
+  
+  //Redraw the curve with the changed point
+  if (drag) {
+      if (activeCircle) {
+          activeCircle.center = new jxPoint(mouseX, mouseY);
+          activeCircle.draw(gr);
+          var curvePoints = new Array(); 
+          for (var i in circles) {
+              curvePoints[i] = circles[i].center;
+          }
+          curve.points = curvePoints;
+          curve.draw(gr); 
+      }
+  }
+  return true;
+}
+</script>
+<script type="text/javascript">
+    (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+</script>
+<script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-350192-9");
+        pageTracker._trackPageview();
+    } catch (err) { }</script>
+<script type="text/javascript">
+    document.getElementById("msg").innerHTML = "Please support this project by sharing it with your friends and followers,";
+</script>
+</body>
+</html>

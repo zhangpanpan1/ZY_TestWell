@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>测试弹出窗口</title>
+        <script type="text/javascript" src="../js/lib/jquery-1.8.2.min.js"></script>
+        <script type="text/javascript" src="../js/lib/XY_Dialog/XY_Base.js"></script>
+        <!--手动加上下面的js引用，则可以不用Util.loadJS来加载后调用，否则则要加-->
+        <script type="text/javascript" src="../js/lib/XY_Dialog/XY_Dialog.js"></script>
+        <link rel="stylesheet" type="text/css" href="../js/lib/XY_Dialog/rest.css">
+        <script type="text/javascript">
+            $().ready(function() {
+                // Util.loadJS("XY_Dialog.js",function(){
+                    $("#btn_show_text").click(function() {
+                        Util.Dialog({
+                            title : "属性",
+                            fixed: true,
+                            showbg:true,
+                            content : "text:"+$("#daoProperty").html(),
+                            yesBtn: ["确定", function(){
+                                //alert("已生效");
+                                return false;
+                            }],
+                            noBtn: ["取消",function(){
+                                return true;
+                            }]
+                        });
+                        return false;
+                    });
+                // });
+            });
+        </script>
+    </head>
+    <body>
+        <canvas id="canvas" width="1150" height="550" style="border:1px solid red;"></canvas>
+        <p>
+        <canvas id="canvas2" width="500" height="50">Your browserdoes not support the canvas element!</canvas>
+        </p>
+        <button id="btn_show_text">点击测试</button>
+        <a href="#" class="jqModal">view</a>
+        <div class="jqmWindow" id="daoProperty" >
+            <div style="background-color:#F0F0F0;padding:10px;width:300px">
+                <table>
+                    <tr><td></td><td></td></tr>
+                    <tr><td>起始深度：</td><td><input id="startDepth" type="text"></td></tr>
+                    <tr><td>起始深度：</td><td><input id="endDepth" type="text"></td></tr>
+                    <tr><td>深度比例：</td><td><input id="depthScale" type="text"></td></tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

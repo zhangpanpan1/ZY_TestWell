@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+<canvas id="canvas" width="1000"height="700" style="margin-left:10.5px;">    
+         <p>Your browserdoes not support the canvas element!</p>    
+</canvas>    
+     
+<script type="text/javascript">    
+window.onload = function() {    
+         var canvas =document.getElementById("canvas");    
+         var context2D =canvas.getContext("2d");    
+
+         context2D.beginPath();   
+         context2D.moveTo(300+0.5,50+0.5); 
+         context2D.lineTo(400+0.5,50+0.5);
+
+         context2D.lineWidth = 2;
+         context2D.stroke();    
+
+
+            
+         // //绘制相交的线段    
+         context2D.beginPath();    
+         context2D.moveTo(50+0.5,50+0.5);    //指定一条线段的起点
+         context2D.lineTo(100+0.5,100+0.5);     //指定一条线段的终点
+         context2D.moveTo(200+0.5,50+0.5);    
+         context2D.lineTo(100+0.5,100+0.5);
+         context2D.lineWidth = 1.5;
+
+         context2D.stroke();    
+
+         context2D.beginPath();    
+         context2D.moveTo(250+0.5,50+0.5);    //指定一条线段的起点
+         context2D.lineTo(300+0.5,100+0.5); 
+         context2D.lineTo(250+0.5,200+0.5);
+         context2D.lineTo(280+0.5,50+0.5);
+             //指定一条线段的终点
+         // context2D.moveTo(400+0.5,50+0.5);    
+         // context2D.lineTo(350+0.5,100+0.5);
+         // context2D.lineTo(250+0.5,50+0.5);
+         //context2D.lineTo(300+0.5,100+0.5);
+
+         context2D.stroke();
+         //context2D.closePath();
+         context2D.fillStyle ="#a3a3a3";    
+         context2D.fill();
+
+
+         context2D.beginPath();    
+         context2D.moveTo(100,300);    //指定一条线段的起点
+         context2D.lineTo(300,300);
+         context2D.lineTo(300,500);
+
+         context2D.lineTo(100,500);
+         context2D.lineTo(100,300);
+         context2D.stroke();
+		 
+         //绘制与这两条线段相切的红色圆弧    
+         context2D.beginPath();    //清除之前的路径并提醒Context开始绘制一条新的路径，否则当调用stroke()方法的时候会绘制之前所有的路径
+         context2D.strokeStyle= "#ff0000";    
+         context2D.moveTo(50,50);    
+         context2D.arcTo(100,100, 200, 50, 100);  //很明显，这里的参数不好设置……  
+         context2D.stroke();    
+         //绘制一个蓝色的圆    
+         context2D.beginPath();    
+         context2D.strokeStyle= "#ff0000";    
+         context2D.arc(400,250, 100, 0, Math.PI*2 , false);    //注意这里的参数是弧度制，而不是角度制
+         context2D.stroke();    
+         //将上面的圆填充为灰色    
+         context2D.fillStyle ="#a3a3a3";    
+         context2D.fill();    
+         //在上面的圆中剪辑一个圆形方形区域    
+         context2D.beginPath();    
+         context2D.rect(350,200, 100, 100);    
+         context2D.clip();    //这个方法确实很土，需要借助于默认的矩形或者制定的矩形，而不能自定义矩形
+         //在剪辑区域中填充一个大于该区域尺寸的矩形    
+         context2D.fillStyle ="yellow";    
+         context2D.fillRect(0,0, 400, 400);  
+
+
+
+        // var pic = new Image();   
+        // pic.onload=function(){  
+        //  	context2D.drawImage(pic,100, 500);  
+        // }          
+        // pic.src ="http://imgsrc.baidu.com/forum/pic/item/e6b14bc2a4561b1fe4dd3b24.jpg";
+}    
+</script>     
+</body>
+</html>

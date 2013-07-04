@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>测试弹出窗口</title>
+        <script type="text/javascript" src="../js/lib/jquery-1.8.2.min.js"></script>
+        <script type="text/javascript" src="../js/lib/jqModal.js"></script>
+        <link rel="stylesheet" type="text/css" href="../js/lib/jqModal.css">
+        <script type="text/javascript">
+            $().ready(function() {
+                $('#daoProperty').jqm();
+            });
+        </script>
+    </head>
+    <body>
+        <canvas id="canvas" width="1150" height="550" style="border:1px solid red;"></canvas>
+        <p>
+        <canvas id="canvas2" width="500" height="50">Your browserdoes not support the canvas element!</canvas>
+        </p>
+        <a href="#" class="jqModal">view</a>
+        <div class="jqmWindow" id="daoProperty">
+            <ul>
+                <li>起始深度：</li>
+                <li>终止深度：</li>
+                <li>深度比例：</li>
+                <li></li>
+            </ul>
+        </div>
+    </body>
+</html>

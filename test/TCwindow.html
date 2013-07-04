@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>一些弹出窗口的表单</title>
+    </head>
+    <body>
+        道属性:
+        <div style="background-color:#F0F0F0;padding:10px;width:300px"><table><tr><td>道 名 称：</td><td colspan="3"><input id="laneName" type="text" value=""></td></tr><tr><td>道名称高度</td><td><input id="nameHeight" type="text" style="width:50px" value=""></td><td>道宽度：</td><td><input id="lanewidth" style="width:39px" type="text" value=""></td></tr></table><table><tr><td>起始深度：</td><td><input id="startDepth" type="text" value=""></td></tr><tr><td>起始深度：</td><td><input id="endDepth" type="text" value=""></td></tr><tr><td>深度比例：</td><td><input id="depthScale" type="text" value=""></td></tr></table><fieldset style="border: solid #A0A0A0 1px;padding:3px;"> <legend>网格&nbsp;</legend><table><tr><td>刻度线：</td><td>细线等分</td><td><input id="horNum" style="width:17px" type="text" value="10"></td><td>粗线间隔</td><td><input id="horBSpace" style="width:17px" type="text" value="5"></td></tr></table><table><tr><td>深度线：</td><td>细线等分</td><td><input id="vSpace" style="width:17px" type="text" value="10"></td><td>中线间隔</td><td><input id="vMSpace" style="width:17px" type="text" value="5"></td><td>粗线间隔</td><td><input id="vBSpace" style="width:17px" type="text" value="5"></td></tr></table></fieldset></div>
+
+        文档属性：
+        <fieldset style="border: solid #A0A0A0 1px;padding:3px;"> <legend><input id="isglobal" checked="checked" type="checkbox" value="">使用统一的深度信息&nbsp;</legend><table><tr><td>起始深度：</td><td><input id="startDepth" type="text" value=""></td></tr><tr><td>起始深度：</td><td><input id="endDepth" type="text" value=""></td></tr><tr><td>深度比例：</td><td><input id="depthScale" type="text" value=""></td></tr></table></fieldset>
+
+
+        曲线属性:
+        <div style="background-color:#F0F0F0;padding:10px;width:300px"><table><tr><td>显示名称：</td><td><input id="name" type="text" value=""></td></tr><tr><td>左刻度值：</td><td><input id="rulerStart" type="text" value=""></td></tr><tr><td>左刻度值：</td><td><input id="rulerEnd" type="text" value=""></td></tr><tr><td>颜色：</td><td><input id="color" type="text" name="color" /></td></tr><tr><td>刻度类型：</td><td><input id="depthScale" type="radio" value="line"/>线性<input id="depthScale" type="radio" value="lg"/>对数</td></tr></table></div>
+
+        填充属性：
+        <div style="background-color:#F0F0F0;padding:10px;width:460px"> <fieldset style="border: solid #A0A0A0 1px;padding:3px;"> <legend>项一&nbsp;</legend><div> <input id="item1_curve" name="item1" type="radio" value="false"/>曲线 曲线：<select id="item1_curves"></select></div><div> <input id="item1_line" name="item1" type="radio" value="true"/>直线 定值：<input id="line1" type="text" style="width:80px;" /></div> <div>左刻度值：<input id="item1_rulerStart" type="text" style="width:50px;" /> 右刻度值：<input id="item1_rulerEnd" type="text" style="width:50px;" /> 刻度类型：<input id="item1_isline" name="item1_log" type="radio" value="line"/>线性<input id="item1_islg" name="item1_log" type="radio" value="lg"/>对数</div> </fieldset> <fieldset style="border: solid #A0A0A0 1px;padding:3px;"> <legend>项二</legend> <div><input id="item2_curve" name="item2" type="radio" value="false"/>曲线 曲线：<select id="item2_curves"></select></div><div><input id="item2_line" name="item2" type="radio" value="true"/>直线 定值：<input id="line2" type="text" style="width:80px;" /></div><div> 左刻度值：<input id="item2_rulerStart" type="text" style="width:50px;" /> 右刻度值：<input id="item2_rulerEnd" type="text" style="width:50px;" /> 刻度类型：<input id="item2_isline" name="item2_log" type="radio" value="line"/>线性<input id="item2_islg" name="item2_log" type="radio" value="lg"/>对数</div> </fieldset> <fieldset style="border: solid #A0A0A0 1px;padding:3px;"> <legend>填充样式&nbsp;</legend> 前景色：<input id="forecolor" type="text" class="color" /> &nbsp;&nbsp;背景色：<input id="backcolor" type="text" class="color" />&nbsp;&nbsp;样式：<span id="fillImgSpan"><input id="fillImg" type="text" style="width:80px;" /></span> 说明：<input id="name" type="text" style="width:80px;" /><br/> 位置：&nbsp;<input id="left" name="position" type="radio" value="left"/>左边&nbsp;&nbsp;<input id="right" name="position" type="radio" value="right"/>右边&nbsp;&nbsp;<input id="both" name="position" type="radio" value="both"/>两边 </fieldset> </div>
+
+        深度道属性:
+        <div style="background-color:#F0F0F0;padding:10px;width:300px"><table><tr><td>显示名称：</td><td><input id="name" type="text" value=""></td></tr><tr><td>深度显示间隔(米)：</td><td><input id="interval" type="text" value=""></td></tr><tr><td>显示文字：</td><td><textarea id="text" style="width:100px" rows="1" value="" ></textarea></td></tr><tr><td>是否显示深度比例：</td><td><input id="depthScale" type="checkbox" value=""></td></tr></table></div>
+
+         </body> </html>

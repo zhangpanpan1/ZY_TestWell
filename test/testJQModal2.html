@@ -1,0 +1,103 @@
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>http://dev.iceburg.net/jquery/jqModal/</title>
+ <link href="jqModal.css" mce_href="jqModal.css" rel="stylesheet" type="text/css" />
+    <mce:script src="jquery.js" mce_src="jquery.js" type="text/javascript"></mce:script>
+    <mce:script src="jqModal.js" mce_src="jqModal.js" type="text/javascript"></mce:script>
+    <mce:script src="jqDnR.js" mce_src="jqDnR.js" type="text/javascript"></mce:script>
+    <mce:script type="text/javascript" language="javascript"><!--
+ 
+    $().ready(function() {
+        $('#divCreate').jqm({trigger: '#create'}); 
+        // $('#divCreate').jqm({modal: true, trigger: '#create'}); //加上modal:true,可以使背
+景不可点击          
+       /*********************************-*/
+       $('#divDialog').jqm();
+       /*-------------------------------------*/
+       $('#ex2').jqm({ajax: 'Test.aspx', trigger: 'a.ex2trigger'});
+       /*-------------------------------------*/
+       $('#ex3a').jqm({
+    modal:true,
+    trigger: '#ex3aTrigger',
+    overlay: 50, /* 0-100 (int) : 0 is off/transparent, 100 is opaque */
+    overlayClass: 'whiteOverlay'})
+    .jqDrag('.jqDrag'); /* make dialog draggable, assign handle to title */
+ 
+  // Close Button Highlighting. IE doesn't support :hover. Surprise?
+  $('input.jqmdX')
+  .hover(
+    function(){ $(this).addClass('jqmdXFocus'); },
+    function(){ $(this).removeClass('jqmdXFocus'); })
+  .focus(
+    function(){ this.hideFocus=true; $(this).addClass('jqmdXFocus'); })
+  .blur(
+    function(){ $(this).removeClass('jqmdXFocus'); });
+    });
+    
+// --></mce:script>
+</head>
+<body>
+    <form id="form1" runat="server">
+ 
+    <a href="javascript:void(0);" mce_href="javascript:void(0);" id="create"><img title="新建" alt="新建"
+src="images/ico/folder_new.gif" /> 新建文件夹</a> 
+   <div id="divCreate" class="jqmWindow" style="display:none;" mce_style="display:none;">
+       <h3>新建文件夹</h3>
+       名称：<asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+       <asp:Button ID="btnCreateFolder" runat="server" Text="确定"  />
+       <asp:Button ID="btnPanel2Cancel" runat="server" Text="取消" />    
+       <br />
+        <a href="#" mce_href="#" class="jqmClose">关闭</a>
+   </div>
+   <br />
+   ------------------------------------------------------------------------------------
+   <br />
+   默认：
+   <br />
+   <a href="#" mce_href="#" class="jqModal">view</a>
+ <div class="jqmWindow" id="divDialog">
+<a href="#" mce_href="#" class="jqmClose">Close</a>
+<hr>
+This is a "vanilla plain" jqModal window. Behavior and appeareance extend far beyond this.
+The demonstrations on this page will show off a few possibilites. I recommend walking
+through each one to get an understanding of jqModal <i>before</i> using it.
+</div>
+ 
+  <br />
+   ------------------------------------------------------------------------------------
+   <br />
+   AJAX：
+   <br />
+   <a href="#" mce_href="#" class="ex2trigger">Ajax</a>
+<div class="jqmWindow" id="ex2">
+Please wait... <img src="images/busy.gif" mce_src="images/busy.gif" alt="loading" />
+</div>
+ 
+    <br />
+   ------------------------------------------------------------------------------------
+   <br />
+   Dialog：
+   <br />
+   <a href="#" mce_href="#" id="ex3aTrigger">view</a> (dialog)
+<div id="ex3a" class="jqmDialog">
+<div class="jqmdTL"><div class="jqmdTR"><div class="jqmdTC jqDrag">Dialog
+Title</div></div></div>
+<div class="jqmdBL"><div class="jqmdBR"><div class="jqmdBC">
+<div class="jqmdMSG">
+Styled windows or dialogs are easy!
+ 
+<br /><br />
+This particular theme was done for poMMo --
+feel free to borrow the styling, or use it as a reference when creating your own.
+CSS and Markup is available under the HTML + CSS tabs of example 3a.
+<br />
+<input type="button" value="确定" />
+</div>
+</div></div></div>
+<input type="image" src="images/close.gif" mce_src="images/close.gif" class="jqmdX jqmClose" />
+</div>
+ 
+ 
+    </form>
+</body>
+</html>
